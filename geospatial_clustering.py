@@ -94,12 +94,13 @@ def mergeDFs(eji, zipT):
     
     return merged.dropna()
 
-def featureImportance(X,y, method):
+def featureImportance(X,y, method, state):
     """
     Analyzes feature importance using a random forest model 
     @param X: the input data as a dataframe
     @param y: the clusters 
     @param method: a string of the method name 
+    @param state: state name
     @return figure "<method>_featureImp.png" in Figures folder
     """
     clf = RandomForestClassifier(n_estimators=100, random_state=42)  # Use 100 trees
@@ -114,7 +115,7 @@ def featureImportance(X,y, method):
 
     fig = px.bar(feature_importance_df, x='Importance', y='Feature', orientation='h',
              title='Top 10 Feature Importances')
-    fig.write_image("Figures/%s_featureImp.png" %(method))
+    fig.write_image("Figures/%s_%s_featureImp.png" %(state, method))
     return 
 
 def network(w, gdf, cols, df, zipcodes, state):
@@ -247,7 +248,7 @@ def network(w, gdf, cols, df, zipcodes, state):
     fig2.write_image("Figures/%s_mclMap.png" %(state))
 
     # Step 13: Runs the feature importance also 
-    featureImportance(df[cols],clusters, 'MCL')
+    featureImportance(df[cols],clusters, 'MCL', state)
     return 
 
 def spatialCorr(zipEJI, cols, zipcodes, state):
@@ -346,7 +347,7 @@ def spatialCorr(zipEJI, cols, zipcodes, state):
     fig.write_image("Figures/%s_moranMap.png" %(state), scale=2)
 
     # run feature importance also 
-    featureImportance(df[cols],df['pop_count_local_moran'].values.tolist(), 'Morans')
+    featureImportance(df[cols],df['pop_count_local_moran'].values.tolist(), 'Morans', state)
 
     # Runs network from here because it needs the gdf file 
     network(w, gdf, cols, df, zipcodes, state)
