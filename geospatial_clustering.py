@@ -40,7 +40,6 @@ import folium
 import matplotlib.colors as colors
 from geopy.geocoders import Nominatim
 from shapely.geometry import Point
-import pygeoda
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 import networkx as nx
@@ -61,11 +60,11 @@ def mergeDFs(eji, zipT):
     ## Sets up the ZIP to TRACT conversion
     zipDF = zipT[['TRACT','ZIP','USPS_ZIP_PREF_STATE']]
     zipDict = {}
-    zipState = {}
+    zipCity = {}
     for i in range(len(zipDF.index)):
         temp = zipDF.iloc[i]
         tempZip = temp['ZIP']
-        zipState[tempZip] = temp['USPS_ZIP_PREF_STATE']
+        zipCity[tempZip] = temp['USPS_ZIP_PREF_STATE']
         if tempZip in zipDict:
             zipDict[tempZip].append(temp['TRACT'])
         else:

@@ -1,0 +1,15 @@
+numpy
+pandas
+shapely
+matplotlib
+plotly
+scikit-learn
+pysal
+splot
+esda
+folium
+geopy
+networkx
+markov_clustering
+scipy
+kaleido
