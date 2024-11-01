@@ -9,31 +9,34 @@ Contains:
 1. geospatial_clustering.py
 2. Data/
 3. Figures/
+4. Geospatial Clustering Notebook.ipynb
+5. EXAMPLE Geospatial Clustering Notebook.pdf 
 
 ### Dependencies: 
 Python3 (I used python 3.9)
 
-Once you've installed python3, make sure the following packages are installed (using pip): 
-'''
-pip install <package>
-'''
-1. Pandas
-2. Numpy
-3. Geopandas
-4. Matplotlib
-5. Plotly
-6. Sklearn
-7. json
-8. Pysal
-9. Splot
-10. Esda
-11. folium
-12. geopy
-13. shapely
-14. pygeoda
-15. networkx
-16. markov_clustering
-17. scipy 
+Once you've installed python3, make sure the following packages are installed (using pip) in a python virtual environment: 
+```
+python -m venv myVenv
+source myVenv/bin/activate
+pip install -r requirements.txt
+conda install geopandas
+```
+If one of the packages in requirements.txt doesn't run, try to install it manually: 
+```
+pip install <package name>
+```
+
+## Geospatial Clustering Notebook.ipynb
+
+This jupyter notebook is what I'd suggest to use for spatial analysis. Make sure Anaconda is already installed.
+Open using the following: 
+
+```
+source myVenv/bin/activate
+jupyter notebook
+```
+Then run every cell using shift+enter.
 
 ## Geospatial_clustering.py 
 
